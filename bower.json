@@ -1,0 +1,22 @@
+{
+  "name": "elmojs",
+  "description": "JS selector/DOM library for aliens.",
+  "main": "dist/elmo.min.js",
+  "authors": [
+    "Jewel Mahanta"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "DOM",
+    "library"
+  ],
+  "homepage": "https://github.com/lap00zza/elmo",
+  "ignore": [
+    "**/.*",
+    "docs",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
