@@ -6,6 +6,26 @@ JS selector/DOM library for aliens.
 * Chaineable
 * Simple API
 
+### Install
+```shell
+# bower
+bower install elmojs
+
+# npm
+npm install elmojs --save-dev
+
+# git
+git clone https://github.com/lap00zza/elmo.git
+```
+
+### Usage
+* Install Elmo!
+* Include it in your `index.html` file 
+```html
+<script src="dist/elmo.min.js">
+```
+* Done! Check the examples below for sample usage.
+
 ### Examples
 ```js
 // Select all the div's
