@@ -1,5 +1,9 @@
-## Elmo!
-JS selector/DOM library for aliens. 
+[![npm version](https://badge.fury.io/js/elmojs.svg)](https://badge.fury.io/js/elmojs)
+[![Bower version](https://badge.fury.io/bo/elmojs.svg)](https://badge.fury.io/bo/elmojs)
+[![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/lap00zza)
+<hr>
+<h1 align="center">Elmo!</h1>
+<p align="center"><em>JS selector/DOM library for aliens.</em></p> 
 
 ### Features
 * Lightweight (seriously!)
@@ -12,7 +16,7 @@ JS selector/DOM library for aliens.
 bower install elmojs
 
 # npm
-npm install elmojs --save-dev
+npm install elmojs
 
 # git
 git clone https://github.com/lap00zza/elmo.git
