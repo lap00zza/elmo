@@ -1,4 +1,4 @@
-#Contributing to Elmo!
+# Contributing to Elmo!
 First off, thanks for taking the time to contribute! You are awesome.
 
 The following is a set of guidelines for contributing to Elmo!
