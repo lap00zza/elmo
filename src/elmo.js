@@ -24,11 +24,7 @@
 
 
 /**
- * Elmo!
- *
- * A simple abstraction library made on top of document.querySelectorAll.
- * Elmo offers a very simple API to all the commonly used DOM methods
- * without the overhead of bigger libraries.
+ * Represents Elmo!
  * @example
  * var divs = new Elmo('div')
  */
@@ -40,7 +36,7 @@ class Elmo {
      */
     constructor (selector){
         /** @type {NodeList} */
-        this.elements = null;
+        this.elements = null
 
         if (selector instanceof HTMLElement) {
             this.elements = [selector]
@@ -92,7 +88,7 @@ class Elmo {
      * @example
      * var divs = new Elmo('div')
      * divs.on('click', function () {
-     *      console.log(this);
+     *      console.log(this)
      * })
      * @returns {Elmo}
      */
@@ -120,13 +116,13 @@ class Elmo {
      * @returns {Elmo}
      */
     css(style) {
-        var cssText = '';
+        var cssText = ''
 
         // using Object is preferred
         if (typeof style === 'object') {
             Object.keys(style).forEach(function (rule) {
                 cssText += rule + ': ' + style[rule] + ';'
-            });
+            })
         } else if (typeof style === 'string') {
             cssText = style
         }
@@ -141,7 +137,6 @@ class Elmo {
 
 /**
  * This will act as the main interface for Elmo.
- * 
  * @param {String} selector
  * @example
  * elmo('div')
