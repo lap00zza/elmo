@@ -1,5 +1,5 @@
 ## Elmo!
-JS selector/DOM library for aliens. Made on top of `document.querySelectorAll`.
+JS selector/DOM library for aliens. 
 
 ### Features
 * Lightweight (seriously!)
