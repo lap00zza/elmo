@@ -26,18 +26,47 @@ var uglify = require('gulp-uglify')
 var pump = require('pump')
 var babel = require('gulp-babel')
 var sourcemaps = require('gulp-sourcemaps')
-var rename = require("gulp-rename")
+var rename = require('gulp-rename')
+var path = require('path')
+var childProcess = require('child_process')
+var runSequence = require('run-sequence')
 
 gulp.task('minify', function (cb) {
-    pump([
-        gulp.src('src/*.js'),
-        sourcemaps.init(),
-        babel({
-            presets: ['es2015']
-        }), 
-        uglify(),
-        rename("elmo.min.js"),
-        sourcemaps.write('.'),
-        gulp.dest('dist')
-    ], cb);
-});
+  pump([
+    gulp.src('src/*.js'),
+    sourcemaps.init(),
+    babel({
+      presets: ['es2015']
+    }),
+    uglify(),
+    rename('elmo.min.js'),
+    sourcemaps.write('.'),
+    gulp.dest('dist')
+  ], cb)
+})
+
+gulp.task('linter', function (done) {
+  var esPath = path.resolve(__dirname, 'node_modules/eslint/bin/eslint.js')
+  var eslintrcPath = path.resolve(__dirname, '.eslintrc.json')
+  var esProcess = childProcess.fork(esPath, [
+    '-c',
+    eslintrcPath,
+    './src',
+    'gulpfile.js'
+  ])
+
+  esProcess.on('exit', function (exitCode) {
+    // if its not a clean exit we call the done
+    // callback with the error code.
+    if (exitCode !== 0) {
+      done(exitCode)
+      return
+    }
+    // If no error, we move on with our lives.
+    done()
+  })
+})
+
+gulp.task('default', function () {
+  runSequence('linter', 'minify')
+})

@@ -33,7 +33,9 @@ Before suggesting an enhancement, please do a quick search in our [Issue Tracker
 * End all files with a newline.
 
 ## Styleguides
-### Git Commit Messages
+#### Git Commit Messages
 [Angular JS Commit Guide](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit)
-### Documentation
+#### Documentation
 [JSDoc](http://usejsdoc.org/)
+#### Javascript
+[StandardJS](http://standardjs.com)

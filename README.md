@@ -2,8 +2,10 @@
 <p align="center"><em>JS selector/DOM library for aliens.</em></p> 
 <p align="center">
 	<a href="https://saythanks.io/to/lap00zza"><img src="https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg" alt="Say Thanks"></a>
+	<a href="https://travis-ci.org/lap00zza/elmo"><img src="https://travis-ci.org/lap00zza/elmo.svg" alt="Build Status"></a>
+	<a href="http://standardjs.com"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg" alt="js-standard-style"></a>
 	<a href="https://www.npmjs.com/package/elmojs"><img src="https://img.shields.io/npm/v/elmojs.svg?maxAge=3600" alt="npm"></a>
-	<img src="https://img.shields.io/bower/v/elmojs.svg?maxAge=3600" alt="bower">
+	<a href="https://github.com/lap00zza/elmo"><img src="https://img.shields.io/bower/v/elmojs.svg?maxAge=3600" alt="bower"></a>
 </p>
 <p align="center"><a href="https://nodei.co/npm/elmojs/"><img src="https://nodei.co/npm/elmojs.png?downloads=true&downloadRank=true&stars=true"></a></p>
 
