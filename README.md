@@ -1,5 +1,5 @@
 <h1 align="center">Elmo!</h1>
-<p align="center"><em>JS selector/DOM library for aliens.</em></p> 
+<p align="center"><em>a simple DOM library for aliens</em></p> 
 <p align="center">
 	<a href="https://saythanks.io/to/lap00zza"><img src="https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg" alt="Say Thanks"></a>
 	<a href="https://travis-ci.org/lap00zza/elmo"><img src="https://travis-ci.org/lap00zza/elmo.svg" alt="Build Status"></a>
