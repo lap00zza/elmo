@@ -22,6 +22,45 @@
  *  SOFTWARE.
  */
 
+// TODO: switch to webpack later
+// TODO: maybe add a check to see if all reqd. params are present?
+
+/**
+ * Represents a missing parameter error.
+ * @extends {Error}
+ */
+class ElmoMissingParameter extends Error {
+  constructor (message) {
+    super()
+    this.name = 'Missing Parameter'
+    this.message = message
+  }
+}
+
+/**
+ * Represents a type not allowed error.
+ * @extends {Error}
+ */
+class ElmoTypeNotAllowed extends Error {
+  constructor (message) {
+    super()
+    this.name = 'Type Not Allowed'
+    this.message = message
+  }
+}
+
+/**
+ * This helper function is used to maintain type consistency.
+ * @param {Array} params
+ */
+function typeChecker (params) {
+  for (var i = 0; i < params.length; i++) {
+    if (params[i].pTypes.indexOf(typeof params[i].pValue) === -1) {
+      throw new ElmoTypeNotAllowed(params[i].pName + ' must be of these types: ' + params[i].pTypes.join())
+    }
+  }
+}
+
 /**
  * Represents Elmo!
  * @example
@@ -30,11 +69,10 @@
 class Elmo {
   /**
    * @param {String|HTMLElement} selector
-   *      Must be a valid selector or a HTMLElement
+   *    Must be a valid selector or a HTMLElement
    * @returns {Elmo}
    */
   constructor (selector) {
-    /** @type {NodeList} */
     this.elements = null
     if (selector instanceof window.HTMLElement) {
       this.elements = [selector]
@@ -47,13 +85,17 @@ class Elmo {
   /**
    * Add a class to all the selected elements.
    * @param {String} className
-   *      The name of the class to add.
+   *    The name of the class to add.
    * @example
    * var divs = new Elmo('div')
    * divs.addClass('hello')
    * @returns {Elmo}
    */
   addClass (className) {
+    typeChecker([
+      {pName: 'className', pTypes: ['string'], pValue: className}
+    ])
+
     for (var i = 0; i < this.elements.length; i++) {
       this.elements[i].classList.add(className)
     }
@@ -63,13 +105,17 @@ class Elmo {
   /**
    * Remove a class to all the selected elements.
    * @param {String} className
-   *      The name of the class to remove.
+   *    The name of the class to remove.
    * @example
    * var divs = new Elmo('div')
    * divs.removeClass('hello')
    * @returns {Elmo}
    */
   removeClass (className) {
+    typeChecker([
+      {pName: 'className', pTypes: ['string'], pValue: className}
+    ])
+
     for (var i = 0; i < this.elements.length; i++) {
       this.elements[i].classList.remove(className)
     }
@@ -79,10 +125,10 @@ class Elmo {
   /**
    * Add a event listener to the selected elements.
    * @param {String} eventType
-   *      The type of event you are listening to.
+   *    The type of event you are listening to.
    * @param {function} listener
-   *      The listener function that will be called when the event is
-   *      triggered.
+   *    The listener function that will be called when the event is
+   *    triggered.
    * @example
    * var divs = new Elmo('div')
    * divs.on('click', function () {
@@ -91,9 +137,11 @@ class Elmo {
    * @returns {Elmo}
    */
   on (eventType, listener) {
-    if (typeof listener !== 'function') {
-      throw new Error('Listener must be a function.')
-    }
+    typeChecker([
+      {pName: 'eventType', pTypes: ['string'], pValue: eventType},
+      {pName: 'listener', pTypes: ['function'], pValue: listener}
+    ])
+
     for (var i = 0; i < this.elements.length; i++) {
       this.elements[i].addEventListener(eventType, listener)
     }
@@ -103,9 +151,9 @@ class Elmo {
   /**
    * Set style on the selected elements.
    * @param {Object|String} style
-   *      The style object/string. If you pass a object, the keys should
-   *      be valid css properties and the values should be valid css
-   *      property values.
+   *    The style object/string. If you pass a object, the keys should
+   *    be valid css properties and the values should be valid css
+   *    property values.
    * @example
    * var divs = new Elmo('div')
    * divs.css({background: 'pink', margin: '1px'})
@@ -114,6 +162,10 @@ class Elmo {
    * @returns {Elmo}
    */
   css (style) {
+    typeChecker([
+      {pName: 'style', pTypes: ['object', 'string'], pValue: style}
+    ])
+
     var cssText = ''
 
     // using Object is preferred
@@ -131,6 +183,72 @@ class Elmo {
 
     return this
   }
+
+  /**
+   * Get the value of an attribute of the first element in the
+   * selected elements.
+   * @param {String} name - The name of the attribute to get.
+   * @example
+   * var divs = new Elmo('div')
+   * divs.attr('class')
+   * @returns {String|null}
+   *    If the attribute exists, then the value is returned. If
+   *    the attribute does not exist, or there are no selected
+   *    elements, then null is returned.
+   */
+  getAttr (name) {
+    typeChecker([
+      {pName: 'name', pTypes: ['string'], pValue: name}
+    ])
+
+    // NOTE: since we are only acting on the first
+    // element, there is no point running it through
+    // a for loop.
+    if (this.elements.length >= 1 && this.elements[0].hasAttribute(name)) {
+      return this.elements[0].getAttribute(name)
+    } else {
+      return null
+    }
+  }
+
+  /**
+   * Set an attribute of all the selected elements.
+   * @param name - The name of the attribute whose value has to be set.
+   * @param {String|Boolean} value - The value of the attribute to set.
+   * @example
+   * var divs = new Elmo('div')
+   * divs.attr('awesome', 'oh! yeah')
+   * @throws {ElmoTypeNotAllowed}
+   *    If value is neither string nor boolean, this error is thrown.
+   */
+  setAttr (name, value) {
+    typeChecker([
+      {pName: 'name', pTypes: ['string'], pValue: name},
+      {pName: 'value', pTypes: ['string', 'boolean'], pValue: value}
+    ])
+
+    for (var j = 0; j < this.elements.length; j++) {
+      this.elements[j].setAttribute(name, value)
+    }
+  }
+
+  /**
+   * Syntactic sugar for {@link Elmo#getAttr} and {@link Elmo#setAttr}
+   * If only name is present, getAttr will be called. If name and
+   * value are both present, setAttribute will be called.
+   * @throws {ElmoMissingParameter}
+   *    If neither name or value is present, this exception will be thrown.
+   */
+  attr (name, value) {
+    if (name && !value) {
+      return this.getAttr(name)
+    } else if (name && value) {
+      this.setAttr(name, value)
+      return this
+    } else {
+      throw new ElmoMissingParameter('Parameter "name" should be present.')
+    }
+  }
 }
 
 /**
@@ -147,6 +265,6 @@ class Elmo {
  * // Elmo {elements: NodeList()}
  * @returns {Elmo}
  */
-window.elmo = function (selector) {
+window.e = window.elmo = function (selector) {
   return new Elmo(selector)
 }
