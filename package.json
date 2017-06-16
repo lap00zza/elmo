@@ -1,7 +1,7 @@
 {
   "name": "elmojs",
   "version": "0.1.0",
-  "description": "JS selector/DOM library for aliens.",
+  "description": "a simple DOM library for aliens",
   "main": "dist/elmo.min.js",
   "directories": {
     "doc": "docs"
