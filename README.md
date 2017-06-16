@@ -1,16 +1,18 @@
-[![npm version](https://badge.fury.io/js/elmojs.svg)](https://badge.fury.io/js/elmojs)
-[![Bower version](https://badge.fury.io/bo/elmojs.svg)](https://badge.fury.io/bo/elmojs)
-[![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/lap00zza)
-<hr>
 <h1 align="center">Elmo!</h1>
 <p align="center"><em>JS selector/DOM library for aliens.</em></p> 
+<p align="center">
+	<a href="https://saythanks.io/to/lap00zza"><img src="https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg" alt="Say Thanks"></a>
+	<a href="https://www.npmjs.com/package/elmojs"><img src="https://img.shields.io/npm/v/elmojs.svg?maxAge=3600" alt="npm"></a>
+	<img src="https://img.shields.io/bower/v/elmojs.svg?maxAge=3600" alt="bower">
+</p>
+<p align="center"><a href="https://nodei.co/npm/elmojs/"><img src="https://nodei.co/npm/elmojs.png?downloads=true&downloadRank=true&stars=true"></a></p>
 
-### Features
+## Features
 * Lightweight (seriously!)
 * Chaineable
 * Simple API
 
-### Install
+## Install
 ```shell
 # bower
 bower install elmojs
@@ -22,7 +24,7 @@ npm install elmojs
 git clone https://github.com/lap00zza/elmo.git
 ```
 
-### Usage
+## Usage
 * Install Elmo!
 * Include it in your `index.html` file 
 ```html
@@ -30,7 +32,7 @@ git clone https://github.com/lap00zza/elmo.git
 ```
 * Done! Check the examples below for sample usage.
 
-### Examples
+## Examples
 ```js
 // Select all the div's
 elmo('div')
@@ -56,8 +58,10 @@ elmo("div")
 	    elmo(this).css("")
     })
 ```
+## Links
+* Documentation: [elmo.js.org](https://elmo.js.org)
 
-### License
+## License
 MIT License
 
 Copyright (c) 2017 Jewel Mahanta
