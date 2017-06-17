@@ -31,7 +31,21 @@ var path = require('path')
 var childProcess = require('child_process')
 var runSequence = require('run-sequence')
 
-gulp.task('minify', function (cb) {
+// Just transpile
+gulp.task('build', function (cb) {
+  pump([
+    gulp.src('src/*.js'),
+    sourcemaps.init(),
+    babel({
+      presets: ['es2015']
+    }),
+    sourcemaps.write('.'),
+    gulp.dest('dist')
+  ], cb)
+})
+
+// Transpile and minify
+gulp.task('build-minified', function (cb) {
   pump([
     gulp.src('src/*.js'),
     sourcemaps.init(),
@@ -68,5 +82,5 @@ gulp.task('linter', function (done) {
 })
 
 gulp.task('default', function () {
-  runSequence('linter', 'minify')
+  runSequence('linter', 'build', 'build-minified')
 })

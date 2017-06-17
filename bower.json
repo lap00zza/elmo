@@ -1,7 +1,7 @@
 {
   "name": "elmojs",
-  "description": "JS selector/DOM library for aliens.",
-  "main": "dist/elmo.min.js",
+  "description": "a simple DOM library for aliens",
+  "main": "dist/elmo.js",
   "authors": [
     "Jewel Mahanta"
   ],
