@@ -22,7 +22,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Elmo.html">Elmo</a><ul class='methods'><li data-type='method'><a href="Elmo.html#addClass">addClass</a></li><li data-type='method'><a href="Elmo.html#attr">attr</a></li><li data-type='method'><a href="Elmo.html#css">css</a></li><li data-type='method'><a href="Elmo.html#getAttr">getAttr</a></li><li data-type='method'><a href="Elmo.html#on">on</a></li><li data-type='method'><a href="Elmo.html#removeClass">removeClass</a></li><li data-type='method'><a href="Elmo.html#setAttr">setAttr</a></li></ul></li><li><a href="ElmoMissingParameter.html">ElmoMissingParameter</a></li><li><a href="ElmoTypeNotAllowed.html">ElmoTypeNotAllowed</a></li></ul><h3>Global</h3><ul><li><a href="global.html#typeChecker">typeChecker</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Elmo.html">Elmo</a><ul class='methods'><li data-type='method'><a href="Elmo.html#_getAttr">_getAttr</a></li><li data-type='method'><a href="Elmo.html#_getData">_getData</a></li><li data-type='method'><a href="Elmo.html#_setAttr">_setAttr</a></li><li data-type='method'><a href="Elmo.html#_setData">_setData</a></li><li data-type='method'><a href="Elmo.html#addClass">addClass</a></li><li data-type='method'><a href="Elmo.html#attr">attr</a></li><li data-type='method'><a href="Elmo.html#css">css</a></li><li data-type='method'><a href="Elmo.html#data">data</a></li><li data-type='method'><a href="Elmo.html#on">on</a></li><li data-type='method'><a href="Elmo.html#removeClass">removeClass</a></li></ul></li><li><a href="ElmoMissingParameter.html">ElmoMissingParameter</a></li><li><a href="ElmoTypeNotAllowed.html">ElmoTypeNotAllowed</a></li></ul><h3>Global</h3><ul><li><a href="global.html#typeChecker">typeChecker</a></li></ul>
 </nav>
 
 <div id="main">
@@ -212,6 +212,665 @@
 
     
 
+    <h4 class="name" id="_getAttr"><span class="type-signature"></span>_getAttr<span class="signature">(name)</span><span class="type-signature"> &rarr; {String|null}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="elmo.js.html">elmo.js</a>, <a href="elmo.js.html#line199">line 199</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    Get the value of an attribute of the first element in theselected elements.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var divs = new Elmo('div')divs._getAttr('class')</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The name of the attribute to get.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    If the attribute exists, then the value is returned. If   the attribute does not exist, or there are no selected   elements, then null is returned.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
+|
+
+<span class="param-type">null</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_getData"><span class="type-signature"></span>_getData<span class="signature">(key)</span><span class="type-signature"> &rarr; {String|null}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="elmo.js.html">elmo.js</a>, <a href="elmo.js.html#line260">line 260</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    Get the value of a dataset of the first element in theselected elements.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var divs = new Elmo('div')divs._getData('hello')</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The data key to get</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
+|
+
+<span class="param-type">null</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_setAttr"><span class="type-signature"></span>_setAttr<span class="signature">(name, value)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="elmo.js.html">elmo.js</a>, <a href="elmo.js.html#line222">line 222</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    Set an attribute of all the selected elements.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var divs = new Elmo('div')divs._setAttr('awesome', 'oh! yeah')</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The name of the attribute whose value has to be set.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The value of the attribute to set.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_setData"><span class="type-signature"></span>_setData<span class="signature">(key, value)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="elmo.js.html">elmo.js</a>, <a href="elmo.js.html#line288">line 288</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    Set data on all the selected elements. _setData can either accept asingle object parameter or 2 parameters - key and value.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var divs = new Elmo('div')// Using Objectdivs._setData({cats: 1, dogs: 12})// Using key and valuedivs._setData('mangoes', 134)</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+|
+
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">If this parameter is a string, this acts as the key. This is used   for storing data on the element. If this parameter is an object,   then value parameter is ignored. The keys and values within the   object will be used to set the data.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    <code>null</code>
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id="addClass"><span class="type-signature"></span>addClass<span class="signature">(className)</span><span class="type-signature"> &rarr; {<a href="Elmo.html">Elmo</a>}</span></h4>
 
     
@@ -368,7 +1027,7 @@
 
     
 
-    <h4 class="name" id="attr"><span class="type-signature"></span>attr<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="attr"><span class="type-signature"></span>attr<span class="signature">(name, value)</span><span class="type-signature"></span></h4>
 
     
 
@@ -380,7 +1039,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="elmo.js.html">elmo.js</a>, <a href="elmo.js.html#line242">line 242</a>
+        <a href="elmo.js.html">elmo.js</a>, <a href="elmo.js.html#line240">line 240</a>
     </li></ul></dd>
     
 
@@ -420,7 +1079,7 @@
 
 
 <div class="description">
-    Syntactic sugar for <a href="Elmo.html#getAttr">Elmo#getAttr</a> and <a href="Elmo.html#setAttr">Elmo#setAttr</a>If only name is present, getAttr will be called. If name andvalue are both present, setAttribute will be called.
+    If only name is present, <a href="Elmo.html#_getAttr">Elmo#_getAttr</a> will be called. If nameand value are both present, <a href="Elmo.html#_setAttr">Elmo#_setAttr</a> will be called.
 </div>
 
 
@@ -431,6 +1090,90 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    <code>null</code>
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -640,7 +1383,7 @@
 
     
 
-    <h4 class="name" id="getAttr"><span class="type-signature"></span>getAttr<span class="signature">(name)</span><span class="type-signature"> &rarr; {String|null}</span></h4>
+    <h4 class="name" id="data"><span class="type-signature"></span>data<span class="signature">(key, value)</span><span class="type-signature"></span></h4>
 
     
 
@@ -652,7 +1395,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="elmo.js.html">elmo.js</a>, <a href="elmo.js.html#line199">line 199</a>
+        <a href="elmo.js.html">elmo.js</a>, <a href="elmo.js.html#line317">line 317</a>
     </li></ul></dd>
     
 
@@ -692,7 +1435,7 @@
 
 
 <div class="description">
-    Get the value of an attribute of the first element in theselected elements.
+    If only key is present, <a href="Elmo.html#_getData">Elmo#_getData</a> will be called. If keyand value are both present, <a href="Elmo.html#_setData">Elmo#_setData</a> will be called.
 </div>
 
 
@@ -701,11 +1444,6 @@
 
 
 
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>var divs = new Elmo('div')divs.attr('class')</code></pre>
 
 
 
@@ -725,6 +1463,8 @@
         
 
         
+        <th>Default</th>
+        
 
         <th class="last">Description</th>
     </tr>
@@ -735,13 +1475,16 @@
 
         <tr>
             
-                <td class="name"><code>name</code></td>
+                <td class="name"><code>key</code></td>
             
 
             <td class="type">
             
                 
 <span class="param-type">String</span>
+|
+
+<span class="param-type">Object</span>
 
 
             
@@ -750,8 +1493,41 @@
             
 
             
+                <td class="default">
+                
+                </td>
+            
 
-            <td class="description last">The name of the attribute to get.</td>
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    <code>null</code>
+                
+                </td>
+            
+
+            <td class="description last"></td>
         </tr>
 
     
@@ -769,33 +1545,37 @@
 
 
 
-
-
-<h5>Returns:</h5>
+<h5>Throws:</h5>
 
         
-<div class="param-desc">
-    If the attribute exists, then the value is returned. If   the attribute does not exist, or there are no selected   elements, then null is returned.
-</div>
 
-
-
-<dl class="param-type">
+<dl>
     <dt>
-        Type
+        <div class="param-desc">
+        If neither key or value is present, this exception will be thrown.
+        </div>
     </dt>
-    <dd>
-        
-<span class="param-type">String</span>
-|
+    <dd></dd>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type"><a href="ElmoMissingParameter.html">ElmoMissingParameter</a></span>
 
-<span class="param-type">null</span>
 
-
-    </dd>
+            </dd>
+        </dl>
+    </dt>
+    <dd></dd>
 </dl>
 
+
     
+
+
 
 
         
@@ -1134,194 +1914,6 @@
 
 
         
-            
-
-    
-
-    <h4 class="name" id="setAttr"><span class="type-signature"></span>setAttr<span class="signature">(name, value)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="elmo.js.html">elmo.js</a>, <a href="elmo.js.html#line224">line 224</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    Set an attribute of all the selected elements.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>var divs = new Elmo('div')divs.attr('awesome', 'oh! yeah')</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The name of the attribute whose value has to be set.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-|
-
-<span class="param-type">Boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The value of the attribute to set.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Throws:</h5>
-
-        
-
-<dl>
-    <dt>
-        <div class="param-desc">
-        If value is neither string nor boolean, this error is thrown.
-        </div>
-    </dt>
-    <dd></dd>
-    <dt>
-        <dl>
-            <dt>
-                Type
-            </dt>
-            <dd>
-                
-<span class="param-type"><a href="ElmoTypeNotAllowed.html">ElmoTypeNotAllowed</a></span>
-
-
-            </dd>
-        </dl>
-    </dt>
-    <dd></dd>
-</dl>
-
-
-    
-
-
-
-
-        
     
 
     
@@ -1339,7 +1931,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sat Jun 17 2017 12:48:15 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sat Jun 17 2017 22:47:23 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
