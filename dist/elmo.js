@@ -229,7 +229,7 @@ var Elmo = function () {
      * @param {String} name - The name of the attribute to get.
      * @example
      * var divs = new Elmo('div')
-     * divs.attr('class')
+     * divs._getAttr('class')
      * @returns {String|null}
      *    If the attribute exists, then the value is returned. If
      *    the attribute does not exist, or there are no selected
@@ -237,8 +237,8 @@ var Elmo = function () {
      */
 
   }, {
-    key: 'getAttr',
-    value: function getAttr(name) {
+    key: '_getAttr',
+    value: function _getAttr(name) {
       typeChecker([{ pName: 'name', pTypes: ['string'], pValue: name }]
 
       // NOTE: since we are only acting on the first
@@ -253,43 +253,133 @@ var Elmo = function () {
 
     /**
      * Set an attribute of all the selected elements.
-     * @param name - The name of the attribute whose value has to be set.
-     * @param {String|Boolean} value - The value of the attribute to set.
+     * @param {String} name - The name of the attribute whose value has to be set.
+     * @param {*} value - The value of the attribute to set.
      * @example
      * var divs = new Elmo('div')
-     * divs.attr('awesome', 'oh! yeah')
-     * @throws {ElmoTypeNotAllowed}
-     *    If value is neither string nor boolean, this error is thrown.
+     * divs._setAttr('awesome', 'oh! yeah')
      */
 
   }, {
-    key: 'setAttr',
-    value: function setAttr(name, value) {
-      typeChecker([{ pName: 'name', pTypes: ['string'], pValue: name }, { pName: 'value', pTypes: ['string', 'boolean'], pValue: value }]);
+    key: '_setAttr',
+    value: function _setAttr(name, value) {
+      typeChecker([{ pName: 'name', pTypes: ['string'], pValue: name }]);
 
       for (var j = 0; j < this.elements.length; j++) {
-        this.elements[j].setAttribute(name, value);
+        this.elements[j].setAttribute(name, value.toString());
       }
     }
 
     /**
-     * Syntactic sugar for {@link Elmo#getAttr} and {@link Elmo#setAttr}
-     * If only name is present, getAttr will be called. If name and
-     * value are both present, setAttribute will be called.
+     * If only name is present, {@link Elmo#_getAttr} will be called. If name
+     * and value are both present, {@link Elmo#_setAttr} will be called.
+     * @param {String} name
+     * @param {*} value
      * @throws {ElmoMissingParameter}
      *    If neither name or value is present, this exception will be thrown.
      */
 
   }, {
     key: 'attr',
-    value: function attr(name, value) {
+    value: function attr(name) {
+      var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
       if (name && !value) {
-        return this.getAttr(name);
+        return this._getAttr(name);
       } else if (name && value) {
-        this.setAttr(name, value);
+        this._setAttr(name, value);
         return this;
       } else {
         throw new ElmoMissingParameter('Parameter "name" should be present.');
+      }
+    }
+
+    /**
+     * Get the value of a dataset of the first element in the
+     * selected elements.
+     * @param {String} key - The data key to get
+     * @example
+     * var divs = new Elmo('div')
+     * divs._getData('hello')
+     * @returns {String|null}
+     */
+
+  }, {
+    key: '_getData',
+    value: function _getData(key) {
+      typeChecker([{ pName: 'key', pTypes: ['string'], pValue: key }]);
+
+      if (this.elements.length >= 1) {
+        return this.elements[0].dataset[key] || null;
+      } else {
+        return null;
+      }
+    }
+
+    /**
+     * Set data on all the selected elements. _setData can either accept a
+     * single object parameter or 2 parameters - key and value.
+     * @param {String|Object} key
+     *    If this parameter is a string, this acts as the key. This is used
+     *    for storing data on the element. If this parameter is an object,
+     *    then value parameter is ignored. The keys and values within the
+     *    object will be used to set the data.
+     * @param {*} value
+     * @example
+     * var divs = new Elmo('div')
+     * // Using Object
+     * divs._setData({cats: 1, dogs: 12})
+     * // Using key and value
+     * divs._setData('mangoes', 134)
+     */
+
+  }, {
+    key: '_setData',
+    value: function _setData(key) {
+      var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      typeChecker([{ pName: 'key', pTypes: ['string', 'object'], pValue: key }]);
+
+      if ((typeof key === 'undefined' ? 'undefined' : _typeof(key)) === 'object') {
+        var dataObj = key;
+        var keys = Object.keys(dataObj);
+        for (var j = 0; j < this.elements.length; j++) {
+          for (var k = 0; k < keys.length; k++) {
+            var eKey = keys[k];
+            this.elements[j].dataset[eKey] = dataObj[eKey].toString();
+          }
+        }
+      } else if (typeof key === 'string') {
+        for (var i = 0; i < this.elements.length; i++) {
+          this.elements[i].dataset[key] = value;
+        }
+      }
+    }
+
+    /**
+     * If only key is present, {@link Elmo#_getData} will be called. If key
+     * and value are both present, {@link Elmo#_setData} will be called.
+     * @param {String|Object} key
+     * @param {*} value
+     * @throws {ElmoMissingParameter}
+     *    If neither key or value is present, this exception will be thrown.
+     */
+
+  }, {
+    key: 'data',
+    value: function data(key) {
+      var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      if (key && !value && typeof key === 'string') {
+        return this._getData(key);
+      } else if (key && !value && (typeof key === 'undefined' ? 'undefined' : _typeof(key)) === 'object') {
+        this._setData(key);
+        return this;
+      } else if (key && value) {
+        this._setData(key, value);
+        return this;
+      } else {
+        throw ElmoMissingParameter('Parameter "key" must be present');
       }
     }
   }]);
