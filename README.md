@@ -30,6 +30,8 @@ git clone https://github.com/lap00zza/elmo.git
 * Install Elmo!
 * Include it in your `index.html` file 
 ```html
+<script src="dist/elmo.js">
+<!-- or -->
 <script src="dist/elmo.min.js">
 ```
 * Done! Check the examples below for sample usage.
