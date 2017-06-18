@@ -1,4 +1,3 @@
-// TODO: switch to webpack later
 // TODO: maybe add a check to see if all reqd. params are present?
 
 import { typeChecker } from './utils'
