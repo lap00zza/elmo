@@ -1,104 +1,142 @@
-'use strict';
+/*!
+ * MIT License
+ * 
+ * Copyright (c) 2017 Jewel Mahanta
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ * 
+ */
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- *  MIT License
- *
- *  Copyright (c) 2017 Jewel Mahanta
- *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
- *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
- *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
- */
-
-// TODO: switch to webpack later
-// TODO: maybe add a check to see if all reqd. params are present?
-
-/**
- * Represents a missing parameter error.
- * @extends {Error}
- */
-var ElmoMissingParameter = function (_Error) {
-  _inherits(ElmoMissingParameter, _Error);
-
-  function ElmoMissingParameter(message) {
-    _classCallCheck(this, ElmoMissingParameter);
-
-    var _this = _possibleConstructorReturn(this, (ElmoMissingParameter.__proto__ || Object.getPrototypeOf(ElmoMissingParameter)).call(this));
-
-    _this.name = 'Missing Parameter';
-    _this.message = message;
-    return _this;
-  }
-
-  return ElmoMissingParameter;
-}(Error);
-
-/**
- * Represents a type not allowed error.
- * @extends {Error}
- */
-
-
-var ElmoTypeNotAllowed = function (_Error2) {
-  _inherits(ElmoTypeNotAllowed, _Error2);
-
-  function ElmoTypeNotAllowed(message) {
-    _classCallCheck(this, ElmoTypeNotAllowed);
-
-    var _this2 = _possibleConstructorReturn(this, (ElmoTypeNotAllowed.__proto__ || Object.getPrototypeOf(ElmoTypeNotAllowed)).call(this));
-
-    _this2.name = 'Type Not Allowed';
-    _this2.message = message;
-    return _this2;
-  }
-
-  return ElmoTypeNotAllowed;
-}(Error);
-
+exports.typeChecker = typeChecker;
 /**
  * This helper function is used to maintain type consistency.
  * @param {Array} params
  */
-
-
 function typeChecker(params) {
   for (var i = 0; i < params.length; i++) {
     if (params[i].pTypes.indexOf(_typeof(params[i].pValue)) === -1) {
-      throw new ElmoTypeNotAllowed(params[i].pName + ' must be of these types: ' + params[i].pTypes.join());
+      throw new Error('Type Error', params[i].pName + ' must be of these types: ' + params[i].pTypes.join());
     }
   }
 }
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); // TODO: switch to webpack later
+// TODO: maybe add a check to see if all reqd. params are present?
+
+var _utils = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
  * Represents Elmo!
  * @example
  * var divs = new Elmo('div')
  */
-
 var Elmo = function () {
   /**
    * @param {String|HTMLElement} selector
@@ -131,7 +169,7 @@ var Elmo = function () {
   _createClass(Elmo, [{
     key: 'addClass',
     value: function addClass(className) {
-      typeChecker([{ pName: 'className', pTypes: ['string'], pValue: className }]);
+      (0, _utils.typeChecker)([{ pName: 'className', pTypes: ['string'], pValue: className }]);
 
       for (var i = 0; i < this.elements.length; i++) {
         this.elements[i].classList.add(className);
@@ -152,7 +190,7 @@ var Elmo = function () {
   }, {
     key: 'removeClass',
     value: function removeClass(className) {
-      typeChecker([{ pName: 'className', pTypes: ['string'], pValue: className }]);
+      (0, _utils.typeChecker)([{ pName: 'className', pTypes: ['string'], pValue: className }]);
 
       for (var i = 0; i < this.elements.length; i++) {
         this.elements[i].classList.remove(className);
@@ -178,7 +216,7 @@ var Elmo = function () {
   }, {
     key: 'on',
     value: function on(eventType, listener) {
-      typeChecker([{ pName: 'eventType', pTypes: ['string'], pValue: eventType }, { pName: 'listener', pTypes: ['function'], pValue: listener }]);
+      (0, _utils.typeChecker)([{ pName: 'eventType', pTypes: ['string'], pValue: eventType }, { pName: 'listener', pTypes: ['function'], pValue: listener }]);
 
       for (var i = 0; i < this.elements.length; i++) {
         this.elements[i].addEventListener(eventType, listener);
@@ -203,7 +241,7 @@ var Elmo = function () {
   }, {
     key: 'css',
     value: function css(style) {
-      typeChecker([{ pName: 'style', pTypes: ['object', 'string'], pValue: style }]);
+      (0, _utils.typeChecker)([{ pName: 'style', pTypes: ['object', 'string'], pValue: style }]);
 
       var cssText = '';
 
@@ -239,7 +277,7 @@ var Elmo = function () {
   }, {
     key: '_getAttr',
     value: function _getAttr(name) {
-      typeChecker([{ pName: 'name', pTypes: ['string'], pValue: name }]
+      (0, _utils.typeChecker)([{ pName: 'name', pTypes: ['string'], pValue: name }]
 
       // NOTE: since we are only acting on the first
       // element, there is no point running it through
@@ -263,7 +301,7 @@ var Elmo = function () {
   }, {
     key: '_setAttr',
     value: function _setAttr(name, value) {
-      typeChecker([{ pName: 'name', pTypes: ['string'], pValue: name }]);
+      (0, _utils.typeChecker)([{ pName: 'name', pTypes: ['string'], pValue: name }]);
 
       for (var j = 0; j < this.elements.length; j++) {
         this.elements[j].setAttribute(name, value.toString());
@@ -275,7 +313,7 @@ var Elmo = function () {
      * and value are both present, {@link Elmo#_setAttr} will be called.
      * @param {String} name
      * @param {*} value
-     * @throws {ElmoMissingParameter}
+     * @throws
      *    If neither name or value is present, this exception will be thrown.
      */
 
@@ -290,7 +328,7 @@ var Elmo = function () {
         this._setAttr(name, value);
         return this;
       } else {
-        throw new ElmoMissingParameter('Parameter "name" should be present.');
+        throw new Error('Missing Parameter', 'Parameter "name" should be present.');
       }
     }
 
@@ -307,7 +345,7 @@ var Elmo = function () {
   }, {
     key: '_getData',
     value: function _getData(key) {
-      typeChecker([{ pName: 'key', pTypes: ['string'], pValue: key }]);
+      (0, _utils.typeChecker)([{ pName: 'key', pTypes: ['string'], pValue: key }]);
 
       if (this.elements.length >= 1) {
         return this.elements[0].dataset[key] || null;
@@ -338,7 +376,7 @@ var Elmo = function () {
     value: function _setData(key) {
       var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
-      typeChecker([{ pName: 'key', pTypes: ['string', 'object'], pValue: key }]);
+      (0, _utils.typeChecker)([{ pName: 'key', pTypes: ['string', 'object'], pValue: key }]);
 
       if ((typeof key === 'undefined' ? 'undefined' : _typeof(key)) === 'object') {
         var dataObj = key;
@@ -361,7 +399,7 @@ var Elmo = function () {
      * and value are both present, {@link Elmo#_setData} will be called.
      * @param {String|Object} key
      * @param {*} value
-     * @throws {ElmoMissingParameter}
+     * @throws
      *    If neither key or value is present, this exception will be thrown.
      */
 
@@ -379,7 +417,7 @@ var Elmo = function () {
         this._setData(key, value);
         return this;
       } else {
-        throw ElmoMissingParameter('Parameter "key" must be present');
+        throw new Error('Missing Parameter', 'Parameter "key" must be present');
       }
     }
   }]);
@@ -406,4 +444,6 @@ var Elmo = function () {
 window.e = window.elmo = function (selector) {
   return new Elmo(selector);
 };
-//# sourceMappingURL=elmo.js.map
+
+/***/ })
+/******/ ]);

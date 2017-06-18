@@ -1,65 +1,7 @@
-/**
- *  MIT License
- *
- *  Copyright (c) 2017 Jewel Mahanta
- *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
- *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
- *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
- */
-
 // TODO: switch to webpack later
 // TODO: maybe add a check to see if all reqd. params are present?
 
-/**
- * Represents a missing parameter error.
- * @extends {Error}
- */
-class ElmoMissingParameter extends Error {
-  constructor (message) {
-    super()
-    this.name = 'Missing Parameter'
-    this.message = message
-  }
-}
-
-/**
- * Represents a type not allowed error.
- * @extends {Error}
- */
-class ElmoTypeNotAllowed extends Error {
-  constructor (message) {
-    super()
-    this.name = 'Type Not Allowed'
-    this.message = message
-  }
-}
-
-/**
- * This helper function is used to maintain type consistency.
- * @param {Array} params
- */
-function typeChecker (params) {
-  for (var i = 0; i < params.length; i++) {
-    if (params[i].pTypes.indexOf(typeof params[i].pValue) === -1) {
-      throw new ElmoTypeNotAllowed(params[i].pName + ' must be of these types: ' + params[i].pTypes.join())
-    }
-  }
-}
+import { typeChecker } from './utils'
 
 /**
  * Represents Elmo!
@@ -234,7 +176,7 @@ class Elmo {
    * and value are both present, {@link Elmo#_setAttr} will be called.
    * @param {String} name
    * @param {*} value
-   * @throws {ElmoMissingParameter}
+   * @throws
    *    If neither name or value is present, this exception will be thrown.
    */
   attr (name, value = null) {
@@ -244,7 +186,7 @@ class Elmo {
       this._setAttr(name, value)
       return this
     } else {
-      throw new ElmoMissingParameter('Parameter "name" should be present.')
+      throw new Error('Missing Parameter', 'Parameter "name" should be present.')
     }
   }
 
@@ -311,7 +253,7 @@ class Elmo {
    * and value are both present, {@link Elmo#_setData} will be called.
    * @param {String|Object} key
    * @param {*} value
-   * @throws {ElmoMissingParameter}
+   * @throws
    *    If neither key or value is present, this exception will be thrown.
    */
   data (key, value = null) {
@@ -324,7 +266,7 @@ class Elmo {
       this._setData(key, value)
       return this
     } else {
-      throw ElmoMissingParameter('Parameter "key" must be present')
+      throw new Error('Missing Parameter', 'Parameter "key" must be present')
     }
   }
 }

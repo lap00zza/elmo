@@ -24,37 +24,58 @@
 var gulp = require('gulp')
 var uglify = require('gulp-uglify')
 var pump = require('pump')
-var babel = require('gulp-babel')
-var sourcemaps = require('gulp-sourcemaps')
 var rename = require('gulp-rename')
 var path = require('path')
 var childProcess = require('child_process')
 var runSequence = require('run-sequence')
+var gutil = require('gulp-util')
+var webpack = require('webpack')
+var fs = require('fs')
 
-// Just transpile
-gulp.task('build', function (cb) {
-  pump([
-    gulp.src('src/*.js'),
-    sourcemaps.init(),
-    babel({
-      presets: ['es2015']
-    }),
-    sourcemaps.write('.'),
-    gulp.dest('dist')
-  ], cb)
+// TODO: add sourcemaps later
+
+gulp.task('build', function (callback) {
+  // run webpack
+  // noinspection JSUnresolvedFunction
+  webpack({
+    entry: {
+      elmo: './src/elmo.js'
+    },
+    module: {
+      rules: [{
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env']
+          }
+        }
+      }]
+    },
+    output: {
+      filename: '[name].js',
+      path: path.resolve(__dirname, 'dist')
+    },
+    plugins: [
+      //  https://webpack.js.org/plugins/banner-plugin/#options
+      new webpack.BannerPlugin({
+        banner: fs.readFileSync('./LICENSE', {encoding: 'UTF-8'}),
+        entryOnly: true
+      })
+    ]
+  }, function (err, stats) {
+    if (err) throw new gutil.PluginError('webpack', err)
+    gutil.log('[webpack]', stats.toString())
+    callback()
+  })
 })
 
 // Transpile and minify
-gulp.task('build-minified', function (cb) {
+gulp.task('minify', function (cb) {
   pump([
-    gulp.src('src/*.js'),
-    sourcemaps.init(),
-    babel({
-      presets: ['es2015']
-    }),
+    gulp.src('dist/elmo.js'),
     uglify(),
     rename('elmo.min.js'),
-    sourcemaps.write('.'),
     gulp.dest('dist')
   ], cb)
 })
@@ -82,5 +103,5 @@ gulp.task('linter', function (done) {
 })
 
 gulp.task('default', function () {
-  runSequence('linter', 'build', 'build-minified')
+  runSequence('linter', 'build', 'minify')
 })
