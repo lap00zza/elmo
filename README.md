@@ -65,6 +65,9 @@ elmo("div")
 ## Links
 * Documentation: [elmo.js.org](https://elmo.js.org)
 
+## Credits
+* @yumiris for the awesome logo
+
 ## License
 MIT License
 
