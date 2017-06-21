@@ -1,3 +1,6 @@
+<p align="center">
+<img src="https://github.com/lap00zza/elmo/blob/master/assets/Elmo_Logo.png" height="200" width="200">
+</p>
 <h1 align="center">Elmo!</h1>
 <p align="center"><em>a simple DOM library for aliens</em></p> 
 <p align="center">
@@ -41,32 +44,14 @@ git clone https://github.com/lap00zza/elmo.git
 // Select all the div's
 elmo('div')
 
-// add class pink to all selected div's
-elmo('div').addClass('pink')
-
-// Remove a class and add a event listener on all the 
-// selected div's
-elmo('div').removeClass('blue').on('click', function () {
-     console.log(this)
-})
-
 // Change some styles
 elmo('div').css({background: 'pink', margin: '1px'})
-
-// You can even do some cool things like this
-elmo("div")
-    .on("mouseenter", function (){
-	    elmo(this).css({background: 'pink', margin: '1px'})
-    })
-    .on("mouseleave", function (){
-	    elmo(this).css("")
-    })
 ```
 ## Links
 * Documentation: [elmo.js.org](https://elmo.js.org)
 
 ## Credits
-* @yumiris for the awesome logo
+* Roman Emilian ([@yumiris](https://github.com/yumiris)) for the awesome logo
 
 ## License
 MIT License
