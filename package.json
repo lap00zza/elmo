@@ -1,6 +1,6 @@
 {
   "name": "elmojs",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "a simple DOM library for aliens",
   "main": "dist/elmo.js",
   "directories": {
