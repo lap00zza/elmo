@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/lap00zza/elmo/blob/master/assets/Elmo_Logo.png" height="200" width="200">
+<img src="https://github.com/lap00zza/elmo/blob/master/assets/Elmo_Logo.png" height="100" width="100">
 </p>
 <h1 align="center">Elmo!</h1>
 <p align="center"><em>a simple DOM library for aliens</em></p> 
